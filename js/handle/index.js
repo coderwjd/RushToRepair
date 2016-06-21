@@ -8,12 +8,17 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import Header from '../common/RTRHeader';
+
 class HandlePage extends Component{
 
     render() {
         return(
-          <View style={{flex:1, alignItems:'center',justifyContent:'center'}}>
-              <TouchableOpacity onPress={() => {this.onPress()}}>
+          <View style={{flex:1}}>
+
+              <Header title="处理"/>
+              <TouchableOpacity style={{flex:1, alignItems:'center',justifyContent:'center'}}
+                                onPress={() => {this.onPress()}}>
                   <Text>
                       我是抢修处理界面
                   </Text>
