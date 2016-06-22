@@ -27,11 +27,12 @@ class HomePage extends Component{
                   <ActionButton
                       name="受理"
                       icon={require('./img/ic_repair_module_add.png')}
-                      onPress={() => {this.onPress("acceptance")}}
-                  />
+                      onPress={() => {this.onPress("acceptance")}}/>
+
                   <ActionButton
                       name="统计"
                       icon={require('./img/ic_repair_module_statistics.png')}/>
+
                   <ActionButton
                       name="已完成"
                       icon={require('./img/ic_repair_module_completed.png')}/>

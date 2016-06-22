@@ -50,9 +50,8 @@ const styles = StyleSheet.create({
         flex:1,
         height: 18,
         borderWidth: 0,
-        alignSelf:'center',
         marginLeft:36,
-        alignItems:'flex-end',
+        backgroundColor: '#fff',
         fontSize:14
     }
 

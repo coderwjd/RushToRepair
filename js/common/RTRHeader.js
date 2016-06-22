@@ -39,12 +39,13 @@ class RTRHeaderAndroid extends Component{
             });
         }
         return(
-            <View>
+            <View style={[styles.toolbarContainer,this.props.style,{backgroundColor:"#00a0f2"}]}>
                 <ToolbarAndroid
                     style={styles.toolbar}
                     navIcon={leftItem && leftItem.icon}
                     onIconClicked={leftItem && leftItem.onPress()}
                     title={this.props.title}
+                    titleColor="#fff"
                     actions={actions}
                     onActionSelected={this.handleActionSelected.bind(this)}
                 />
@@ -123,6 +124,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    toolbarContainer: {
+        paddingTop: STATUS_BAR_HEIGHT,
     },
     toolbar: {
         height: HEADER_HEIGHT - STATUS_BAR_HEIGHT
