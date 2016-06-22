@@ -41,14 +41,15 @@ const styles = StyleSheet.create({
         paddingTop:12,
         paddingLeft:16,
         paddingRight:16,
-        alignItems:'center',
         flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
         backgroundColor: '#fff'
     },
 
     textInput:{
         flex:1,
-        height: 18,
+        height: 24,
         borderWidth: 0,
         marginLeft:36,
         backgroundColor: '#fff',

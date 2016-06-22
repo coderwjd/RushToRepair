@@ -100,7 +100,7 @@ class AcceptancePage extends Component{
 
                   <View style={{marginTop:8}}>
                       <EditText
-                          name="备注         "
+                          name="备注        "
                           content="请输入备注信息"/>
                   </View>
 
@@ -164,7 +164,6 @@ const styles = StyleSheet.create({
     },
 
     buttonBox: {
-        height:18,
         backgroundColor:"#00a0f2",
         alignItems:'center',
         marginRight:16,
