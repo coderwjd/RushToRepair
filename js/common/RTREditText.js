@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
 
     textInput:{
         flex:1,
-        height: 24,
+        height: 50,
         borderWidth: 0,
         marginLeft:36,
-        backgroundColor: '#fff',
-        fontSize:14
+        fontSize:14,
+        color:'#000'
     }
 
 });
