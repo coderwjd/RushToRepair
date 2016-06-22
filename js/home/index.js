@@ -13,12 +13,13 @@ import {
 import HandlePage from '../handle';
 import AcceptancePage from '../acceptance';
 import Header from '../common/RTRHeader';
+import HomeListView from './HomeListView';
 
 class HomePage extends Component{
 
     render() {
         return(
-          <View style={{flex:1}}>
+          <View style={{flex:1, backgroundColor:"#f5f5f5"}}>
               <Header title="抢修养护"/>
 
               <View style={styles.ActionButtonBox}>
@@ -37,13 +38,7 @@ class HomePage extends Component{
 
               </View>
 
-              <TouchableOpacity
-                  style={{flex:1, alignItems:'center',justifyContent:'center'}}
-                  onPress={() => {this.onPress("handle")}}>
-                  <Text>
-                      我是主页
-                  </Text>
-              </TouchableOpacity>
+              <HomeListView />
           </View>
         )
     }
