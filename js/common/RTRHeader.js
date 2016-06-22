@@ -43,7 +43,7 @@ class RTRHeaderAndroid extends Component{
                 <ToolbarAndroid
                     style={styles.toolbar}
                     navIcon={leftItem && leftItem.icon}
-                    onIconClicked={leftItem && leftItem.onPress()}
+                    onIconClicked={leftItem && leftItem.onPress}
                     title={this.props.title}
                     titleColor="#fff"
                     actions={actions}
