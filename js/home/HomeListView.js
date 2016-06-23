@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 
 import ListViewItem from './HomeListView.Item';
-import Handle from '../handle';
+import HandlePage from '../handle';
+import SendPage from '../send';
 
 
 var ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2, sectionHeaderHasChanged: (prev, next) => prev !== next});
@@ -76,7 +77,10 @@ class HomeListView extends Component{
     }
 
     onPressSend(rowData){
-        console.log(123,rowData);
+        this.props.navigator.push({
+            component:SendPage,
+            params:{data:rowData}
+        })
 
     }
 
@@ -92,7 +96,7 @@ class HomeListView extends Component{
     onPressHandle(rowData){
         if (rowData.status == 1) {
             this.props.navigator.push({
-                component:Handle,
+                component:HandlePage,
                 params:{data:rowData}
             })
         }

@@ -15,7 +15,7 @@ class RTREditText extends Component{
 
     render(){
         return(
-            <View style={styles.editTextBox}>
+            <View style={[styles.editTextBox, this.props.style]}>
                 <Text>
                     {this.props.name}
                 </Text>

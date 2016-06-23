@@ -13,16 +13,21 @@ import {
 //import Popup from 'react-native-popup';
 
 import Header from '../common/RTRHeader';
+import Spinner from '../common/RTRSpinner';
+import EditText from '../common/RTREditText';
+import Button from '../common/RTRButton';
 
-class HandlePage extends Component{
+class SendPage extends Component{
 
     render() {
+        console.log("props",this.props);
 
         let home = this.props.data;
         return(
           <View style={{flex:1,backgroundColor:'#f5f5f5'}}>
 
-              <Header title="处理"
+              <Header title="派发"
+                      rightItem={{icon:require('../img/ic_basic_nav_position.png'), onPress:() =>{this.onPress()}}}
                       leftItem={{icon:require('../img/ic_back_white.png'),
                       onPress:() => {this.onPress()}}}/>
 
@@ -41,29 +46,44 @@ class HandlePage extends Component{
                               <Text>{home.area}</Text>
                           </View>
 
-                          <View style={{alignItems:'flex-end'}}>
-                              <View style={{flexDirection:'row'}}>
-                                  <Text style={styles.pinkText}>{home.arrive}</Text>
-                                  <Text>{"到场"}</Text>
-                              </View>
-                              <View style={{flexDirection:'row'}}>
-                                  <Text style={styles.pinkText}>{home.finish}</Text>
-                                  <Text>{"完成"}</Text>
-                              </View>
-                              <Text>{home.sendTime}</Text>
-                          </View>
-
                       </View>
 
                   </View>
 
               </View>
 
-              <View style={{backgroundColor:'#fff', flex:1, alignItems:'center',justifyContent:'center', marginTop:8}}>
-                  <Text>
-                      {"处理TAB界面,尚待研究"}
-                  </Text>
+              <View style={styles.sendContentBox}>
+                  <Spinner
+                      name="执行小组"
+                      content="抢修一队"
+                      onPress={() => {this.onPress()}}/>
+
+                  <View style={styles.line} />
+
+                  <Spinner
+                      name="到场时限"
+                      content="30分钟"
+                      onPress={() => {this.onPress()}}/>
+
+                  <View style={styles.line} />
+
+                  <Spinner
+                      name="完成时限"
+                      content="6小时"
+                      onPress={() => {this.onPress()}}/>
               </View>
+
+              <View>
+                  <EditText
+                      style={{marginTop:8}}
+                      name="备注        "
+                      content="请输入备注信息"/>
+              </View>
+
+              <Button name="派发"
+                      style={{marginTop:16}}
+                      onPress={this.onPress.bind(this)}/>
+
 
           </View>
         )
@@ -90,6 +110,18 @@ const styles = StyleSheet.create({
         paddingTop:12
     },
 
+    sendContentBox:{
+        backgroundColor:'#fff',
+        marginTop:8
+    },
+
+    line:{
+        flex:1,
+        height:1,
+        backgroundColor:'#e0e0e0'
+
+    },
+
     imgIcon:{
         width:48,
         height:48
@@ -107,4 +139,4 @@ const styles = StyleSheet.create({
 
 });
 
-module.exports = HandlePage;
+module.exports = SendPage;

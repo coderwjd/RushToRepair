@@ -31,10 +31,14 @@ class RTRHeaderAndroid extends Component{
         const {leftItem, rightItem} = this.props;
         let actions = [];
         if (rightItem) {
+
+            console.log("rightItem",rightItem);
+
             const {title, icon, layout} = rightItem;
+
             actions.push({
                 icon:layout !== 'title' ? icon : undefined,
-                title:title,
+                title:title == null ? "" : title,
                 show:'always'
             });
         }
