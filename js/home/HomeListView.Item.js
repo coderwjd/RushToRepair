@@ -188,7 +188,6 @@ const styles = StyleSheet.create({
     },
 
     buttonBox: {
-        height:18,
         backgroundColor:"#00a0f2",
         alignItems:'center',
         justifyContent:'center'
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
 
     buttonText: {
         color:'#fff',
-        padding:5,
+        margin:5,
         fontSize:12
     },
 

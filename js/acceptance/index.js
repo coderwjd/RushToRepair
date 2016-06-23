@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
 
     buttonText: {
         color:'#fff',
-        padding:5,
+        margin:5,
         fontSize:12
     },
 
@@ -194,13 +194,15 @@ const styles = StyleSheet.create({
 
     ActionRightText: {
         color:'#00a0f2',
-        padding:8,
+        marginBottom:10,
+        marginTop:10,
         fontSize:14
     },
 
     ActionLeftText: {
         color:'#fff',
-        padding:8,
+        marginBottom:10,
+        marginTop:10,
         fontSize:14
     }
 });

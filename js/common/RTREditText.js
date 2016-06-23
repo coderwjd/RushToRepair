@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
 
     editTextBox: {
         flex:1,
-        paddingBottom:12,
-        paddingTop:12,
         paddingLeft:16,
         paddingRight:16,
         flexDirection:'row',
@@ -53,6 +51,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         marginLeft:36,
         fontSize:14,
+        backgroundColor:'#fff',
         color:'#000'
     }
 
