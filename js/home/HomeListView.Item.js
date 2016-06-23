@@ -17,7 +17,7 @@ class HomeListViewItem extends Component {
         switch (home.status) {
             case 0://派发
                 return (
-                    <TouchableOpacity style={styles.buttonBox} onPress={() => {this.props.onPress("send")}}>
+                    <TouchableOpacity style={styles.buttonBox} onPress={() => this.props.onPressSend(home)}>
                         <Text style={styles.buttonText}>
                             {"派发"}
                         </Text>
@@ -54,6 +54,8 @@ class HomeListViewItem extends Component {
     render() {
 
         let home = this.props.data;
+        let textColor = home.status == 1 ? '#00a0f2' : '#838383';
+        let buttonIcon = home.status == 1 ? require('./img/ic_repair_btn_solve_pressed.png') : require('./img/ic_repair_btn_solve.png');
         return (
             <View style={styles.box}>
                 <View style={{flexDirection:'row',flex:1,paddingLeft:16,paddingRight:16}}>
@@ -102,7 +104,7 @@ class HomeListViewItem extends Component {
                     <ActionButton name="定位" icon={require('./img/ic_repair_btn_position_pressed.png')}
                                   onPress={() => this.props.onPressPositioning(home)}/>
                     <View style={styles.levelLine}/>
-                    <ActionButton name="处理" icon={require('./img/ic_repair_btn_solve_pressed.png')}
+                    <ActionButton style={{color:textColor}}name="处理" icon={buttonIcon}
                                   onPress={() => this.props.onPressHandle(home)}/>
                 </View>
                 <View style={styles.line}/>
@@ -117,12 +119,13 @@ class HomeListViewItem extends Component {
 
 class ActionButton extends Component{
     render(){
+
         return (
             <TouchableOpacity
                 style={styles.actionButtonItemBox}
                 onPress={this.props.onPress}>
                 <Image style={styles.actionButtonImg} source = {this.props.icon}/>
-                <Text style={styles.actionButtonText}>
+                <Text style={[styles.actionButtonText,this.props.style]}>
                     {this.props.name}
                 </Text>
             </TouchableOpacity>

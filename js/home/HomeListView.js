@@ -75,6 +75,11 @@ class HomeListView extends Component{
         }
     }
 
+    onPressSend(rowData){
+        console.log(123,rowData);
+
+    }
+
     onPressTelPhone(rowData){
         console.log(123,rowData);
 
@@ -85,12 +90,13 @@ class HomeListView extends Component{
     }
 
     onPressHandle(rowData){
-        console.log(12345,rowData);
+        if (rowData.status == 1) {
+            this.props.navigator.push({
+                component:Handle,
+                params:{data:rowData}
+            })
+        }
 
-        this.props.navigator.push({
-            component:Handle,
-            params:{data:rowData}
-        })
     }
 
 
@@ -98,6 +104,7 @@ class HomeListView extends Component{
 
         return(
             <ListViewItem data={rowData}
+                          onPressSend={this.onPressSend.bind(this)}
                           onPressTelPhone={this.onPressTelPhone.bind(this)}
                           onPressPositioning={this.onPressPositioning.bind(this)}
                           onPressHandle={this.onPressHandle.bind(this)}/>

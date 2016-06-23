@@ -50,20 +50,6 @@ class HomePage extends Component{
         switch (tag)
         {
 
-            case "send":
-
-                component = {
-                    name:"Handle",
-                    component:HandlePage
-                };
-                break;
-            case "handle":
-
-                component = {
-                    name:"Handle",
-                    component:HandlePage
-                };
-                break;
             case "acceptance":
                 component = {
                     name:"Acceptance",

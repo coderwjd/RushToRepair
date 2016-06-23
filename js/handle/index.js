@@ -8,6 +8,8 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+//import Popup from 'react-native-popup';
+
 import Header from '../common/RTRHeader';
 
 class HandlePage extends Component{
