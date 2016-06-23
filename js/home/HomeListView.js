@@ -76,7 +76,7 @@ class HomeListView extends Component{
     renderRow(rowData,sectionID,rowID){
 
         return(
-            <ListViewItem data={rowData} />
+            <ListViewItem data={rowData} onPress={() => {this.props.onPress()}}/>
         )
     }
 
@@ -86,7 +86,7 @@ class HomeListView extends Component{
                 dataSource={ds.cloneWithRows(this.state.homes)}
                 //renderHeader={this.renderHeader}
                 enableEmptySections={true}
-                renderRow={this.renderRow}/>
+                renderRow={this.renderRow.bind(this)}/>
         )
     }
 }

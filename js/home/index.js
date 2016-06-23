@@ -39,22 +39,25 @@ class HomePage extends Component{
 
               </View>
 
-              <HomeListView />
+              <HomeListView onPress={() => {this.onPress()}}/>
           </View>
         )
     }
 
     onPress(tag){
+
         let component;
         switch (tag)
         {
             case "handle":
+                console.log("handle");
                 component = {
                     name:"Handle",
                     component:HandlePage
                 };
                 break;
             case "acceptance":
+                console.log("acceptance");
                 component = {
                     name:"Acceptance",
                     component:AcceptancePage

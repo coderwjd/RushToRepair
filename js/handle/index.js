@@ -16,13 +16,10 @@ class HandlePage extends Component{
         return(
           <View style={{flex:1}}>
 
-              <Header title="处理"/>
-              <TouchableOpacity style={{flex:1, alignItems:'center',justifyContent:'center'}}
-                                onPress={() => {this.onPress()}}>
-                  <Text>
-                      我是抢修处理界面
-                  </Text>
-              </TouchableOpacity>
+              <Header title="处理"
+                      leftItem={{icon:require('../img/ic_back_white.png'),
+                      onPress:() => {this.onPress()}}}/>
+
           </View>
         )
     }

@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 
 
-class HomeListViewItem extends Component{
+class HomeListViewItem extends Component {
 
     renderSend(home) {
-        switch (home.status){
+        switch (home.status) {
             case 0://派发
-                return(
-                    <TouchableOpacity style={styles.buttonBox}>
+                return (
+                    <TouchableOpacity style={styles.buttonBox} onPress={() => {this.props.onPress("派发")}}>
                         <Text style={styles.buttonText}>
                             {"派发"}
                         </Text>
@@ -25,7 +25,7 @@ class HomeListViewItem extends Component{
                 )
                 break;
             case 1://已派发
-                return(
+                return (
                     <View style={{alignItems:'flex-end'}}>
                         <View style={{flexDirection:'row'}}>
                             <Text style={styles.pinkText}>{home.arrive}</Text>
@@ -42,8 +42,8 @@ class HomeListViewItem extends Component{
         }
     }
 
-    renderContentItem(item){
-        return(
+    renderContentItem(item) {
+        return (
             <View style={{flexDirection:'row'}}>
                 <Text style={{flex:1}}>{item.contentKey}</Text>
                 <Text>{item.contentValue}</Text>
@@ -51,10 +51,10 @@ class HomeListViewItem extends Component{
         )
     }
 
-    render(){
+    render() {
 
         let home = this.props.data;
-        return(
+        return (
             <View style={styles.box}>
                 <View style={{flexDirection:'row',flex:1,paddingLeft:16,paddingRight:16}}>
                     <Image style={styles.imgIcon}
@@ -65,7 +65,7 @@ class HomeListViewItem extends Component{
                             <View style={{flex:1}}>
                                 <View style={{flexDirection:'row'}}>
                                     <Text style={styles.blueText}>{home.type}</Text>
-                                    <Text>{"<"+home.source+">"}</Text>
+                                    <Text>{"<" + home.source + ">"}</Text>
                                 </View>
                                 <Text>{home.num}</Text>
                                 <Text>{home.area}</Text>
@@ -76,7 +76,7 @@ class HomeListViewItem extends Component{
 
                         </View>
 
-                        <View style={styles.line} />
+                        <View style={styles.line}/>
 
                         <View style={{paddingBottom:12, paddingTop:12}}>
 
@@ -94,23 +94,26 @@ class HomeListViewItem extends Component{
 
                 </View>
 
-                <View style={styles.line} />
+                <View style={styles.line}/>
                 <View style={styles.actionButtonBox}>
-                    <ActionButton name="电话" icon={require('./img/ic_repair_btn_phone_pressed.png')}/>
-                    <View style={styles.levelLine} />
-                    <ActionButton name="定位" icon={require('./img/ic_repair_btn_position_pressed.png')}/>
-                    <View style={styles.levelLine} />
-                    <ActionButton name="处理" icon={require('./img/ic_repair_btn_solve_pressed.png')}/>
+                    <ActionButton name="电话" icon={require('./img/ic_repair_btn_phone_pressed.png')}
+                                  onPress={() => {this.props.onPress("电话")}}/>
+                    <View style={styles.levelLine}/>
+                    <ActionButton name="定位" icon={require('./img/ic_repair_btn_position_pressed.png')}
+                                  onPress={() => {this.props.onPress("定位")}}/>
+                    <View style={styles.levelLine}/>
+                    <ActionButton name="处理" icon={require('./img/ic_repair_btn_solve_pressed.png')}
+                                  onPress={() => {this.props.onPress("handle")}}/>
                 </View>
-                <View style={styles.line} />
-                <View style={styles.lineBox} />
+                <View style={styles.line}/>
+                <View style={styles.lineBox}/>
 
             </View>
         )
 
     }
-
 }
+
 
 class ActionButton extends Component{
     render(){
