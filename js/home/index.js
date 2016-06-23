@@ -39,7 +39,7 @@ class HomePage extends Component{
 
               </View>
 
-              <HomeListView onPress={() => {this.onPress()}}/>
+              <HomeListView navigator={this.props.navigator}/>
           </View>
         )
     }

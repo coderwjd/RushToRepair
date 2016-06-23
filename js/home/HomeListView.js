@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 
 import ListViewItem from './HomeListView.Item';
+import Handle from '../handle';
+
 
 var ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2, sectionHeaderHasChanged: (prev, next) => prev !== next});
 
@@ -73,10 +75,32 @@ class HomeListView extends Component{
         }
     }
 
+    onPressTelPhone(rowData){
+        console.log(123,rowData);
+
+    }
+
+    onPressPositioning(rowData){
+        console.log(1234,rowData);
+    }
+
+    onPressHandle(rowData){
+        console.log(12345,rowData);
+
+        this.props.navigator.push({
+            component:Handle,
+            params:{data:rowData}
+        })
+    }
+
+
     renderRow(rowData,sectionID,rowID){
 
         return(
-            <ListViewItem data={rowData} onPress={() => {this.props.onPress()}}/>
+            <ListViewItem data={rowData}
+                          onPressTelPhone={this.onPressTelPhone.bind(this)}
+                          onPressPositioning={this.onPressPositioning.bind(this)}
+                          onPressHandle={this.onPressHandle.bind(this)}/>
         )
     }
 
