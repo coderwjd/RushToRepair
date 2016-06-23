@@ -17,7 +17,7 @@ class HomeListViewItem extends Component {
         switch (home.status) {
             case 0://派发
                 return (
-                    <TouchableOpacity style={styles.buttonBox} onPress={() => {this.props.onPress("派发")}}>
+                    <TouchableOpacity style={styles.buttonBox} onPress={() => {this.props.onPress("send")}}>
                         <Text style={styles.buttonText}>
                             {"派发"}
                         </Text>

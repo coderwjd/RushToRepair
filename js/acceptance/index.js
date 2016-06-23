@@ -18,6 +18,8 @@ import DateTimeEdit from '../common/RTRDateTimeEdit';
 
 class AcceptancePage extends Component{
 
+
+
     render() {
         return(
           <View style={{flex:1}}>

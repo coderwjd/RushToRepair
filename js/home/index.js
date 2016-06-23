@@ -45,19 +45,26 @@ class HomePage extends Component{
     }
 
     onPress(tag){
-
+        console.log("tag:"+tag);
         let component;
         switch (tag)
         {
+
+            case "send":
+
+                component = {
+                    name:"Handle",
+                    component:HandlePage
+                };
+                break;
             case "handle":
-                console.log("handle");
+
                 component = {
                     name:"Handle",
                     component:HandlePage
                 };
                 break;
             case "acceptance":
-                console.log("acceptance");
                 component = {
                     name:"Acceptance",
                     component:AcceptancePage
@@ -66,7 +73,8 @@ class HomePage extends Component{
 
         }
 
-        this.props.navigator.push(component)
+        if (component)
+            this.props.navigator.push(component)
     }
 
 }
