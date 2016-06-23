@@ -97,13 +97,13 @@ class HomeListViewItem extends Component {
                 <View style={styles.line}/>
                 <View style={styles.actionButtonBox}>
                     <ActionButton name="电话" icon={require('./img/ic_repair_btn_phone_pressed.png')}
-                                  onPress={() => {this.props.onPress("电话")}}/>
+                                  onPress={() => this.props.onPressTelPhone(home)}/>
                     <View style={styles.levelLine}/>
                     <ActionButton name="定位" icon={require('./img/ic_repair_btn_position_pressed.png')}
-                                  onPress={() => {this.props.onPress("定位")}}/>
+                                  onPress={() => this.props.onPressPositioning(home)}/>
                     <View style={styles.levelLine}/>
                     <ActionButton name="处理" icon={require('./img/ic_repair_btn_solve_pressed.png')}
-                                  onPress={() => {this.props.onPress("handle")}}/>
+                                  onPress={() => this.props.onPressHandle(home)}/>
                 </View>
                 <View style={styles.line}/>
                 <View style={styles.lineBox}/>
