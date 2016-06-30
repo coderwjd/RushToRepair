@@ -8,21 +8,45 @@ import {
     Image,
     StyleSheet,
     TouchableOpacity,
-    Switch
+    ListView,
+    Switch,
+    PixelRatio,
+    Dimensions
 } from 'react-native';
 
 import Header from '../common/RTRHeader';
 import Spinner from '../common/RTRSpinner';
 import EditText from '../common/RTREditText';
 import DateTimeEdit from '../common/RTRDateTimeEdit';
+import Popup from '../common/RTRPopup';
+
+var source;
+var type;
+var area;
+var level;
 
 class AcceptancePage extends Component{
 
-
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            sourceContent:"事件中心",
+            typeContent:"管道抢修",
+            areaContent:"萧山营业所",
+            levelContent:"6小时"
+        };
+        this.source = this.state.sourceContent;
+        this.type = this.state.typeContent;
+        this.area = this.state.areaContent;
+        this.level = this.state.levelContent;
+    }
 
     render() {
         return(
           <View style={{flex:1}}>
+
 
               <Header title="受理"
                       leftItem={{icon:require('../img/ic_back_white.png'),
@@ -33,8 +57,8 @@ class AcceptancePage extends Component{
                   <View style={{marginTop:8}}>
                       <Spinner
                           name="任务来源"
-                          content="事件中心"
-                          onPress={() => {this.onPress()}}/>
+                          content={this.state.sourceContent}
+                          onPress={() => {this.onPress('任务来源')}}/>
                       <View style={styles.line} />
                       <View style={styles.editBox}>
                           <EditText
@@ -53,22 +77,22 @@ class AcceptancePage extends Component{
 
                       <Spinner
                           name="任务类型"
-                          content="管道抢修"
-                          onPress={() => {this.onPress()}}/>
+                          content={this.state.typeContent}
+                          onPress={() => {this.onPress('任务类型')}}/>
 
                       <View style={styles.line} />
 
                       <Spinner
                           name="所在区域"
-                          content="萧山营业所"
-                          onPress={() => {this.onPress()}}/>
+                          content={this.state.areaContent}
+                          onPress={() => {this.onPress('所在区域')}}/>
 
                       <View style={styles.line} />
 
                       <Spinner
                           name="处理级别"
-                          content="6小时"
-                          onPress={() => {this.onPress()}}/>
+                          content={this.state.levelContent}
+                          onPress={() => {this.onPress('处理级别')}}/>
 
                   </View>
 
@@ -124,12 +148,114 @@ class AcceptancePage extends Component{
 
 
               </View>
+
+              <Popup ref={(popup) => {this.popup = popup}}/>
           </View>
         )
     }
 
-    onPress(){
-        this.props.navigator.pop()
+    onPress(tag){
+        switch (tag) {
+            case '任务来源':
+                this.popup.showList(this.renderListView(tag,["事件中心","热线系统","电话反映"]));
+                break;
+            case '任务类型':
+                this.popup.showList(this.renderListView(tag,["管道抢修","设备养护","杂工","其他"]));
+                break;
+            case '所在区域':
+                this.popup.showList(this.renderListView(tag,["萧山营业所","城南营业所","江东营业所","余杭营业所"]));
+                break;
+            case '处理级别':
+                this.popup.showList(this.renderListView(tag,["6小时","12小时","24小时","24小时","48小时"]));
+                break;
+            default:
+                this.props.navigator.pop();
+                break;
+        }
+
+    }
+
+    renderListView(title, content){
+        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.state = {
+            dataSource: ds.cloneWithRows(content)
+        };
+
+        return(
+            <View style={{flex:1}}>
+                <Text style={styles.listTitle}>{title || ''}</Text>
+                <View style={styles.popupLine}/>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    enableEmptySections={true}
+                    renderRow={(rowData,sectionID,rowID) => this.renderRow(rowData,sectionID,rowID,title)}
+                />
+            </View>
+
+        )
+    }
+
+    renderRow(rowData,sectionID,rowID,title){
+
+
+        return(
+
+            <TouchableOpacity onPress={() => {this.onPressItem(rowData,title)}}>
+                <Text style={styles.itemText}>{rowData}</Text>
+            </TouchableOpacity>
+        )
+    }
+
+
+    onPressItem(rowData,title){
+        switch (title) {
+            case '任务来源':
+                this.source = rowData;
+                this.setState(
+                    {
+                        sourceContent:rowData,
+                        typeContent:this.type,
+                        areaContent:this.area,
+                        levelContent:this.level
+                    }
+                );
+                break;
+            case '任务类型':
+                this.type = rowData;
+                this.setState(
+                    {
+                        sourceContent:this.source,
+                        typeContent:rowData,
+                        areaContent:this.area,
+                        levelContent:this.level
+                    }
+                );
+                break;
+            case '所在区域':
+                this.area = rowData;
+                this.setState(
+                    {
+                        sourceContent:this.source,
+                        typeContent:this.type,
+                        areaContent:rowData,
+                        levelContent:this.level
+                    }
+                );
+                break;
+            case '处理级别':
+                this.level = rowData;
+                this.setState(
+                    {
+                        sourceContent:this.source,
+                        typeContent:this.type,
+                        areaContent:this.area,
+                        levelContent:rowData
+                    }
+                );
+                break;
+        }
+
+        this.popup.close();
     }
 
 }
@@ -164,6 +290,26 @@ const styles = StyleSheet.create({
         backgroundColor:'#e0e0e0'
 
     },
+
+    popupLine: {
+        height: 1 / PixelRatio.get(),
+        width: Dimensions.get('window').width - 50,
+        backgroundColor: '#ddd'
+    },
+
+    itemText: {
+        fontSize: 14,
+        alignSelf:"center",
+        margin:12,
+        color: '#149be0'
+    },
+    listTitle: {
+        fontSize: 16,
+        fontWeight: '500',
+        margin:12,
+        textAlign: 'center'
+    },
+
 
     buttonBox: {
         backgroundColor:"#00a0f2",

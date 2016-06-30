@@ -27,7 +27,7 @@ class SendPage extends Component{
           <View style={{flex:1,backgroundColor:'#f5f5f5'}}>
 
               <Header title="派发"
-                      rightItem={{icon:require('../img/ic_basic_nav_position.png'), onPress:() =>{this.onPress()}}}
+                      rightItem={[{icon:require('../img/ic_basic_nav_position.png'), onPress:() =>{this.onPress()}},{icon:require('../img/ic_basic_nav_phone.png'), onPress:() =>{this.onPress()}}]}
                       leftItem={{icon:require('../img/ic_back_white.png'),
                       onPress:() => {this.onPress()}}}/>
 

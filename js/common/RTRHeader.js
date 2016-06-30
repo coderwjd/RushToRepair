@@ -34,13 +34,16 @@ class RTRHeaderAndroid extends Component{
 
             console.log("rightItem",rightItem);
 
-            const {title, icon, layout} = rightItem;
+            rightItem.forEach(function(item){
+                const {title, icon, layout} = item;
 
-            actions.push({
-                icon:layout !== 'title' ? icon : undefined,
-                title:title == null ? "" : title,
-                show:'always'
+                actions.push({
+                    icon:layout !== 'title' ? icon : undefined,
+                    title:title || "",
+                    show:'always'
+                });
             });
+
         }
         return(
             <View style={[styles.toolbarContainer,this.props.style,{backgroundColor:"#00a0f2"}]}>

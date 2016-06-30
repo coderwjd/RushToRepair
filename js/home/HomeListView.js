@@ -14,6 +14,8 @@ import {
 import ListViewItem from './HomeListView.Item';
 import HandlePage from '../handle';
 import SendPage from '../send';
+import TestPage from '../test';
+import Popup from '../common/RTRPopup';
 
 
 var ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2, sectionHeaderHasChanged: (prev, next) => prev !== next});
@@ -85,12 +87,19 @@ class HomeListView extends Component{
     }
 
     onPressTelPhone(rowData){
-        console.log(123,rowData);
+        this.props.navigator.push({
+            component:TestPage,
+            params:{data:rowData}
+        })
 
     }
 
     onPressPositioning(rowData){
-        console.log(1234,rowData);
+        if (rowData)
+        {
+            this.popup.showList(rowData.addressItem.contentValue,["北京","上海","杭州"])
+        }
+
     }
 
     onPressHandle(rowData){
@@ -117,11 +126,16 @@ class HomeListView extends Component{
 
     render(){
         return(
-            <ListView
-                dataSource={ds.cloneWithRows(this.state.homes)}
-                //renderHeader={this.renderHeader}
-                enableEmptySections={true}
-                renderRow={this.renderRow.bind(this)}/>
+            <View style={{flex:1}}>
+                <ListView
+                    dataSource={ds.cloneWithRows(this.state.homes)}
+                    //renderHeader={this.renderHeader}
+                    enableEmptySections={true}
+                    renderRow={this.renderRow.bind(this)}/>
+
+                <Popup ref={(popup) => {this.popup = popup}}/>
+            </View>
+
         )
     }
 }
