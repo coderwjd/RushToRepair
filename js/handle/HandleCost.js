@@ -10,25 +10,38 @@ import {
     Image
 } from 'react-native';
 
+import CostEdit from '../common/RTRCostEdit';
+import Button from '../common/RTRButton';
+import Line from '../common/RTRLine';
+
 class HandleCost extends Component{
 
 
     render(){
         return(
             <View style={styles.box}>
-                <Text style={styles.text}>费用信息界面</Text>
+                <CostEdit name="人工费" content="0.0元" onPress={() => this.onPress()} isShowIcon={true}/>
+                <Line/>
+                <CostEdit name="机械费" content="0.0元" onPress={() => this.onPress()} isShowIcon={true}/>
+                <Line/>
+                <CostEdit name="其他费用" content="0.0元" onPress={() => this.onPress()} isShowIcon={true}/>
+
+                <CostEdit style={{marginTop:16}} name="总费用" content="0.0元" isShowIcon={false}/>
+
+                <Button style={{marginTop:16}} name="上传" onPress={() => this.onPress()}/>
             </View>
         )
     }
 
+    onPress(){
+
+    }
 }
+
 
 const styles = StyleSheet.create({
     box: {
-        flex:1,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        alignItems:'center'
+        backgroundColor: '#f5f5f5'
     },
 
 

@@ -14,13 +14,24 @@ import Text from './RTRText';
 
 class RTRDateTimeEdit extends Component{
 
+    renderIcon(){
+
+        if (this.props.isShowIcon){
+            return(
+                <Image style={styles.icon}
+                       source={require('./img/ic_basic_list_next.png')}/>
+            )
+        }
+
+        return null;
+    }
+
     render(){
         return(
-            <TouchableOpacity style={styles.spinnerBox} onPress={this.props.onPress}>
-                <Text name={this.props.name}/>
-                <Text style={styles.spinnerContentText} name={this.props.content}/>
-                <Image style={styles.spinnerIcon}
-                       source={require('./img/ic_basic_list_next.png')}></Image>
+            <TouchableOpacity style={[styles.box, this.props.style]} onPress={this.props.onPress}>
+                <Text style={styles.keyText} name={this.props.name}/>
+                <Text style={styles.valueText} name={this.props.content}/>
+                {this.renderIcon()}
             </TouchableOpacity>
         )
 
@@ -30,7 +41,7 @@ class RTRDateTimeEdit extends Component{
 
 const styles = StyleSheet.create({
 
-    spinnerBox: {
+    box: {
         paddingBottom:12,
         paddingTop:12,
         paddingLeft:16,
@@ -40,17 +51,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
 
-    spinnerIcon:{
+    icon:{
         height: 16,
         width:16
     },
 
+    keyText:{
+        flex:1
+    },
 
-    spinnerContentText: {
-        flex:1,
-        color:'#6f6f6f',
-        fontSize:14,
-        marginLeft:36
+    valueText: {
+        marginRight:12
     }
 });
 

@@ -207,6 +207,8 @@ const styles = StyleSheet.create({
 
     levelLine:{
         width:1,
+        marginTop:5,
+        marginBottom:5,
         backgroundColor:'#e0e0e0'
     },
 
