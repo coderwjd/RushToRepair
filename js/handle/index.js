@@ -18,6 +18,7 @@ import Photo from './HandlePhoto';
 import Implement from './HandleImplement';
 import Measures from './HandleMeasures';
 import Cost from './HandleCost';
+import ActionButton from '../common/RTRActionButton';
 
 
 class HandleButton extends Component{
@@ -121,15 +122,30 @@ class HandlePage extends Component{
                   {this.renderHandle()}
               </View>
 
+              <View style={styles.lineH}/>
+              <View style={styles.actionButtonBox}>
+                  <ActionButton name="电话" icon={require('../home/img/ic_repair_btn_phone_pressed.png')}
+                                onPress={() => this.onPress()}/>
+                  <View style={styles.levelLine}/>
+                  <ActionButton name="定位" icon={require('../home/img/ic_repair_btn_position_pressed.png')}
+                                onPress={() => this.onPress()}/>
+                  <View style={styles.levelLine}/>
+                  <ActionButton name="用料" icon={require('../home/img/ic_repair_btn_material_pressed.png')}
+                                onPress={() => this.onPress()}/>
+              </View>
+
           </View>
         )
     }
+
 
     onPress(){
         this.props.navigator.pop()
     }
 
 }
+
+
 
 const styles = StyleSheet.create({
 
@@ -181,6 +197,18 @@ const styles = StyleSheet.create({
         paddingLeft:16,
         paddingRight:16,
         paddingTop:12
+    },
+
+    actionButtonBox: {
+
+        backgroundColor:'#fff',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+
+    levelLine:{
+        width:1,
+        backgroundColor:'#e0e0e0'
     },
 
     imgIcon:{
