@@ -8,7 +8,6 @@ import {
     StyleSheet,
     PropTypes,
     View,
-    Text,
     TouchableOpacity,
     Dimensions,
     TouchableWithoutFeedback,
@@ -16,6 +15,8 @@ import {
     Platform,
     ListView
 } from 'react-native';
+
+import Text from './RTRText';
 
 class PopContent extends Component{
 
@@ -30,7 +31,7 @@ class PopContent extends Component{
         let btnNumber = btns.length;
         return (
             <View style={styles.tipBox}>
-                { title && <View style={styles.tipTitleBox}><Text style={styles.tipTitle}>{title}</Text></View>}
+                { title && <View style={styles.tipTitleBox}><Text style={styles.tipTitle} name={title}/></View>}
                 <View style={styles.tipContentBox}>
                     {(() => {
                         let tipContent = [];
@@ -39,10 +40,10 @@ class PopContent extends Component{
                                 if(index > 9){
                                     return;
                                 }
-                                item && ( tipContent[index] = (<Text style={styles.tipContent} key={'tipContent' + index}>{item}</Text>) );
+                                item && ( tipContent[index] = (<Text style={styles.tipContent} key={'tipContent' + index} name={item}/>) );
                             });
                         }else{
-                            content && ( tipContent[0] = (<Text style={styles.tipContent} key={'tipContent'}>{content}</Text>) );
+                            content && ( tipContent[0] = (<Text style={styles.tipContent} key={'tipContent'} name={content}/>) );
                         }
                         return tipContent;
                     })()}
@@ -54,7 +55,7 @@ class PopContent extends Component{
                         btns.forEach((btn, index) => {
                             btnContent.push(
                                 <TouchableOpacity style={styles.btnTextBox} onPress={btn.callback} key={'btnTextBox' + index}>
-                                    <Text style={styles.btnText}>{btn.text}</Text>
+                                    <Text style={styles.btnText} name={btn.text}/>
                                 </TouchableOpacity>
                             );
                             index != btnNumber - 1 && btnContent.push( <View style={styles.btnLine} key={'btnLine' + index} /> );

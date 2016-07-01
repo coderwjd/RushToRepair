@@ -97,7 +97,7 @@ class HomeListView extends Component{
     onPressPositioning(rowData){
         if (rowData)
         {
-            this.popup.showList(rowData.addressItem.contentValue,["北京","上海","杭州"])
+            this.popup.alert(rowData.addressItem.contentValue)
         }
 
     }

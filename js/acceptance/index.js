@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     Image,
     StyleSheet,
     TouchableOpacity,
@@ -19,11 +18,9 @@ import Spinner from '../common/RTRSpinner';
 import EditText from '../common/RTREditText';
 import DateTimeEdit from '../common/RTRDateTimeEdit';
 import Popup from '../common/RTRPopup';
+import Text from '../common/RTRText';
+import Button from '../common/RTRButton';
 
-var source;
-var type;
-var area;
-var level;
 
 class AcceptancePage extends Component{
 
@@ -65,9 +62,7 @@ class AcceptancePage extends Component{
                               name="编号       "
                               content="请输入正确编号"/>
                           <TouchableOpacity style={styles.buttonBox}>
-                              <Text style={styles.buttonText}>
-                                  加载
-                              </Text>
+                              <Text style={styles.buttonText} name="加载"/>
                           </TouchableOpacity>
                       </View>
 
@@ -117,13 +112,6 @@ class AcceptancePage extends Component{
 
                   </View>
 
-                  <View style={[styles.contentItemBox,{marginTop:8}]}>
-                      <Text style={{flex:1}}>
-                          {"委派其他营业所"}
-                      </Text>
-                      <Switch/>
-                  </View>
-
                   <View style={{marginTop:8}}>
                       <EditText
                           name="备注        "
@@ -132,17 +120,9 @@ class AcceptancePage extends Component{
 
                   <View style={{flexDirection:'row'}}>
 
-                      <TouchableOpacity style={styles.ActionLeftBox}>
-                          <Text style={styles.ActionLeftText}>
-                              {"受理"}
-                          </Text>
-                      </TouchableOpacity>
+                      <Button style={styles.ActionLeftBox} name="受理" textStyle={styles.ActionLeftText}/>
 
-                      <TouchableOpacity style={styles.ActionRightBox}>
-                          <Text style={styles.ActionRightText}>
-                              {"受理并派发"}
-                          </Text>
-                      </TouchableOpacity>
+                      <Button style={styles.ActionRightBox} name="受理并派发" textStyle={styles.ActionRightText}/>
 
                   </View>
 
@@ -183,7 +163,7 @@ class AcceptancePage extends Component{
 
         return(
             <View style={{flex:1}}>
-                <Text style={styles.listTitle}>{title || ''}</Text>
+                <Text style={styles.listTitle} name={title || ''}/>
                 <View style={styles.popupLine}/>
                 <ListView
                     dataSource={this.state.dataSource}
@@ -201,7 +181,7 @@ class AcceptancePage extends Component{
         return(
 
             <TouchableOpacity onPress={() => {this.onPressItem(rowData,title)}}>
-                <Text style={styles.itemText}>{rowData}</Text>
+                <Text style={styles.itemText} name={rowData}/>
             </TouchableOpacity>
         )
     }

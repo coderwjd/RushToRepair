@@ -6,11 +6,11 @@ import React, { Component } from 'react';
 import {
     View,
     Image,
-    Text,
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
 
+import Text from './RTRText';
 
 class RTRActionButton extends Component{
     render(){
@@ -20,9 +20,7 @@ class RTRActionButton extends Component{
                 style={styles.actionButtonItemBox}
                 onPress={this.props.onPress}>
                 <Image style={styles.actionButtonImg} source = {this.props.icon}/>
-                <Text style={[styles.actionButtonText,this.props.style]}>
-                    {this.props.name}
-                </Text>
+                <Text style={[styles.actionButtonText,this.props.style]} name={this.props.name}/>
             </TouchableOpacity>
         )
     }

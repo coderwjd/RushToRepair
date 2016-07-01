@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     TouchableOpacity,
     StyleSheet,
     Image,
@@ -20,14 +19,14 @@ import Measures from './HandleMeasures';
 import Cost from './HandleCost';
 import ActionButton from '../common/RTRActionButton';
 
+import Text from '../common/RTRText';
+
 
 class HandleButton extends Component{
     render(){
         return(
             <TouchableOpacity style={[styles.btnBox,this.props.isSelect?{backgroundColor:'#545454'}:{}]} onPress={this.props.onPress}>
-                <Text style={[styles.actionText,this.props.isSelect?{color:'#fff'}:{}]}>
-                    {this.props.name}
-                </Text>
+                <Text style={[styles.actionText,this.props.isSelect?{color:'#fff'}:{}]} name= {this.props.name}/>
             </TouchableOpacity>
         )
     }
@@ -72,8 +71,8 @@ class HandlePage extends Component{
           <View style={{flex:1,backgroundColor:'#f5f5f5'}}>
 
               <Header title="处理"
-                      leftItem={{icon:require('../img/ic_back_white.png'),
-                      onPress:() => {this.onPress()}}}/>
+                      leftItem={{icon:require('../img/ic_back_white.png'),onPress:() => {this.onPress()}}}
+                      rightItem={{title:"确认完成",onPress:() => {this.onPress()}}}/>
 
               <View style={styles.contentHeaderBox}>
                   <Image style={styles.imgIcon}
@@ -83,23 +82,23 @@ class HandlePage extends Component{
                       <View style={styles.repBox}>
                           <View style={{flex:1}}>
                               <View style={{flexDirection:'row'}}>
-                                  <Text style={styles.blueText}>{home.type}</Text>
-                                  <Text>{"<" + home.source + ">"}</Text>
+                                  <Text style={styles.blueText} name={home.type}/>
+                                  <Text name={"<" + home.source + ">"}/>
                               </View>
-                              <Text>{home.num}</Text>
-                              <Text>{home.area}</Text>
+                              <Text name={home.num}/>
+                              <Text name={home.area}/>
                           </View>
 
                           <View style={{alignItems:'flex-end'}}>
                               <View style={{flexDirection:'row'}}>
-                                  <Text style={styles.pinkText}>{home.arrive}</Text>
-                                  <Text>{"到场"}</Text>
+                                  <Text style={styles.pinkText} name={home.arrive}/>
+                                  <Text name="到场"/>
                               </View>
                               <View style={{flexDirection:'row'}}>
-                                  <Text style={styles.pinkText}>{home.finish}</Text>
-                                  <Text>{"完成"}</Text>
+                                  <Text style={styles.pinkText} name={home.finish}/>
+                                  <Text name="完成"/>
                               </View>
-                              <Text>{home.sendTime}</Text>
+                              <Text name={home.sendTime}/>
                           </View>
 
                       </View>

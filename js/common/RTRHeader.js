@@ -27,22 +27,22 @@ class RTRHeaderAndroid extends Component{
     }
 
     render(){
-
         const {leftItem, rightItem} = this.props;
         let actions = [];
         if (rightItem) {
 
-            console.log("rightItem",rightItem);
+            //console.log("rightItem",rightItem);
+            const {title, icon, layout} = rightItem;
 
-            rightItem.forEach(function(item){
-                const {title, icon, layout} = item;
-
-                actions.push({
-                    icon:layout !== 'title' ? icon : undefined,
-                    title:title || "",
-                    show:'always'
-                });
+            actions.push({
+                icon:layout !== 'title' ? icon : undefined,
+                title:title || "",
+                show:'always'
             });
+
+            //rightItem.forEach(function(item){
+            //
+            //});
 
         }
         return(
@@ -96,8 +96,8 @@ class ItemIOS extends Component{
         var center;
         if (title) {
             center = (
-                <Text>
-                    title
+                <Text style={styles.rightText}>
+                    {title}
                 </Text>
             );
         }else if (icon) {
@@ -157,6 +157,11 @@ const styles = StyleSheet.create({
     rightItem:{
         flex: 1,
         alignItems: 'flex-end'
+    },
+
+    rightText: {
+        fontSize:12,
+        color:'#fff'
     }
 });
 

@@ -4,11 +4,12 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     TouchableOpacity,
     StyleSheet,
     Image
 } from 'react-native';
+
+import Text from '../common/RTRText';
 
 
 class HomeListViewItem extends Component {
@@ -18,9 +19,7 @@ class HomeListViewItem extends Component {
             case 0://派发
                 return (
                     <TouchableOpacity style={styles.buttonBox} onPress={() => this.props.onPressSend(home)}>
-                        <Text style={styles.buttonText}>
-                            {"派发"}
-                        </Text>
+                        <Text style={styles.buttonText} name="派发"/>
                     </TouchableOpacity>
                 )
                 break;
@@ -28,14 +27,14 @@ class HomeListViewItem extends Component {
                 return (
                     <View style={{alignItems:'flex-end'}}>
                         <View style={{flexDirection:'row'}}>
-                            <Text style={styles.pinkText}>{home.arrive}</Text>
-                            <Text>{"到场"}</Text>
+                            <Text style={styles.pinkText} name={home.arrive}/>
+                            <Text name="到场"/>
                         </View>
                         <View style={{flexDirection:'row'}}>
-                            <Text style={styles.pinkText}>{home.finish}</Text>
-                            <Text>{"完成"}</Text>
+                            <Text style={styles.pinkText} name={home.finish}/>
+                            <Text name="完成"/>
                         </View>
-                        <Text>{home.sendTime}</Text>
+                        <Text name={home.sendTime}/>
                     </View>
                 )
                 break;
@@ -45,8 +44,8 @@ class HomeListViewItem extends Component {
     renderContentItem(item) {
         return (
             <View style={{flexDirection:'row'}}>
-                <Text style={{flex:1}}>{item.contentKey}</Text>
-                <Text>{item.contentValue}</Text>
+                <Text style={{flex:1}} name={item.contentKey}/>
+                <Text name={item.contentValue}/>
             </View>
         )
     }
@@ -66,11 +65,11 @@ class HomeListViewItem extends Component {
                         <View style={styles.repBox}>
                             <View style={{flex:1}}>
                                 <View style={{flexDirection:'row'}}>
-                                    <Text style={styles.blueText}>{home.type}</Text>
-                                    <Text>{"<" + home.source + ">"}</Text>
+                                    <Text style={styles.blueText} name={home.type}/>
+                                    <Text name={"<" + home.source + ">"}/>
                                 </View>
-                                <Text>{home.num}</Text>
-                                <Text>{home.area}</Text>
+                                <Text name={home.num}/>
+                                <Text name={home.area}/>
                             </View>
                             <View style={{justifyContent:'center'}}>
                                 {this.renderSend(this.props.data)}
@@ -125,9 +124,7 @@ class ActionButton extends Component{
                 style={styles.actionButtonItemBox}
                 onPress={this.props.onPress}>
                 <Image style={styles.actionButtonImg} source = {this.props.icon}/>
-                <Text style={[styles.actionButtonText,this.props.style]}>
-                    {this.props.name}
-                </Text>
+                <Text style={[styles.actionButtonText,this.props.style]} name={this.props.name}/>
             </TouchableOpacity>
         )
     }
@@ -240,6 +237,9 @@ const styles = StyleSheet.create({
         color:'#00a0f2',
         marginLeft:8,
         fontSize:14
+    },
+    text:{
+        color:'#545454'
     }
 });
 

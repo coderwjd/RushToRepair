@@ -4,11 +4,12 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     TouchableOpacity,
     StyleSheet,
     TextInput
 } from 'react-native';
+
+import Text from './RTRText';
 
 
 class RTREditText extends Component{
@@ -16,10 +17,7 @@ class RTREditText extends Component{
     render(){
         return(
             <View style={[styles.editTextBox, this.props.style]}>
-                <Text>
-                    {this.props.name}
-                </Text>
-
+                <Text name={this.props.name}/>
                 <TextInput
                     style={styles.textInput}
                     placeholder={this.props.content}

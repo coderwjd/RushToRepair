@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     TouchableOpacity,
     StyleSheet,
     Image
@@ -16,6 +15,7 @@ import Header from '../common/RTRHeader';
 import Spinner from '../common/RTRSpinner';
 import EditText from '../common/RTREditText';
 import Button from '../common/RTRButton';
+import Text from '../common/RTRText';
 
 class SendPage extends Component{
 
@@ -38,11 +38,11 @@ class SendPage extends Component{
                       <View style={styles.repBox}>
                           <View style={{flex:1}}>
                               <View style={{flexDirection:'row'}}>
-                                  <Text style={styles.blueText}>{home.type}</Text>
-                                  <Text>{"<" + home.source + ">"}</Text>
+                                  <Text style={styles.blueText} name={home.type}/>
+                                  <Text name={"<" + home.source + ">"}/>
                               </View>
-                              <Text>{home.num}</Text>
-                              <Text>{home.area}</Text>
+                              <Text name={home.num}/>
+                              <Text name={home.area}/>
                           </View>
 
                       </View>

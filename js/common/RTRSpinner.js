@@ -5,24 +5,20 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     TouchableOpacity,
     StyleSheet,
     Image
 } from 'react-native';
 
+import Text from './RTRText';
 
 class RTRSpinner extends Component{
 
     render(){
         return(
             <TouchableOpacity style={styles.spinnerBox} onPress={this.props.onPress}>
-                <Text>
-                    {this.props.name}
-                </Text>
-                <Text style={styles.spinnerContentText}>
-                    {this.props.content}
-                </Text>
+                <Text name={this.props.name}/>
+                <Text style={styles.spinnerContentText} name={this.props.content}/>
                 <Image style={styles.spinnerIcon}
                        source={require('./img/ic_spinner_icon.png')}></Image>
             </TouchableOpacity>

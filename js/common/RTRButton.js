@@ -5,10 +5,11 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
+
+import Text from './RTRText';
 
 
 class RTRButton extends Component{
@@ -16,9 +17,7 @@ class RTRButton extends Component{
     render(){
         return(
             <TouchableOpacity style={[styles.buttonBox, this.props.style]} onPress={this.props.onPress}>
-                <Text style={styles.buttonText}>
-                    {this.props.name}
-                </Text>
+                <Text style={[styles.buttonText,this.props.textStyle]} name={this.props.name}/>
             </TouchableOpacity>
         )
 
