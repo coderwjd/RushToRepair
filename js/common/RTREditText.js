@@ -6,6 +6,7 @@ import {
     View,
     TouchableOpacity,
     StyleSheet,
+    Platform,
     TextInput
 } from 'react-native';
 
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
 
     textInput:{
         flex:1,
-        height: 50,
+        height: Platform.OS === "ios" ? 42 : 50,
         borderWidth: 0,
         marginLeft:36,
         fontSize:14,
