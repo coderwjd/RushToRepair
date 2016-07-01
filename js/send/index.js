@@ -20,7 +20,6 @@ import Button from '../common/RTRButton';
 class SendPage extends Component{
 
     render() {
-        console.log("props",this.props);
 
         let home = this.props.data;
         return(

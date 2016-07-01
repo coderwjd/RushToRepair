@@ -7,14 +7,62 @@ import {
     Text,
     TouchableOpacity,
     StyleSheet,
-    Image
+    Image,
+    Platform
 } from 'react-native';
 
 //import Popup from 'react-native-popup';
 
 import Header from '../common/RTRHeader';
+import Photo from './HandlePhoto';
+import Implement from './HandleImplement';
+import Measures from './HandleMeasures';
+import Cost from './HandleCost';
+
+
+class HandleButton extends Component{
+    render(){
+        return(
+            <TouchableOpacity style={[styles.btnBox,this.props.isSelect?{backgroundColor:'#545454'}:{}]} onPress={this.props.onPress}>
+                <Text style={[styles.actionText,this.props.isSelect?{color:'#fff'}:{}]}>
+                    {this.props.name}
+                </Text>
+            </TouchableOpacity>
+        )
+    }
+}
 
 class HandlePage extends Component{
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            tag:"photo"
+        };
+    }
+
+    renderHandle(){
+        let Component = null;
+        switch (this.state.tag)
+        {
+            case 'photo':
+                Component = Photo;
+                break;
+            case 'implement':
+                Component = Implement;
+                break;
+            case 'measures':
+                Component = Measures;
+                break;
+            case 'cost':
+                Component = Cost;
+                break;
+        }
+
+        return <Component/>
+    }
 
     render() {
 
@@ -59,10 +107,18 @@ class HandlePage extends Component{
 
               </View>
 
-              <View style={{backgroundColor:'#fff', flex:1, alignItems:'center',justifyContent:'center', marginTop:8}}>
-                  <Text>
-                      {"处理TAB界面,尚待研究"}
-                  </Text>
+              <View style={styles.handleActionBox}>
+                  <View style={styles.lineV}/>
+                  <HandleButton name="图片信息" isSelect={this.state.tag === 'photo'} onPress={() => {this.setState({tag:'photo'})}}/>
+                  <HandleButton name="执行信息" isSelect={this.state.tag === 'implement'} onPress={() => {this.setState({tag:'implement'})}}/>
+                  <HandleButton name="解决措施" isSelect={this.state.tag === 'measures'} onPress={() => {this.setState({tag:'measures'})}}/>
+                  <HandleButton name="费用信息" isSelect={this.state.tag === 'cost'} onPress={() => {this.setState({tag:'cost'})}}/>
+              </View>
+
+              <View style={styles.lineH}/>
+
+              <View style={{flex:1}}>
+                  {this.renderHandle()}
               </View>
 
           </View>
@@ -80,6 +136,43 @@ const styles = StyleSheet.create({
     repBox: {
         paddingBottom:12,
         flexDirection:'row'
+    },
+
+    handleActionBox:{
+        paddingTop:16,
+        paddingBottom:16,
+        paddingLeft:32,
+        backgroundColor:'#fff',
+        paddingRight:32,
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+
+    actionText:{
+        fontSize:12,
+        color:"#545454",
+        alignSelf:'center'
+    },
+
+    lineV:{
+        backgroundColor:'#545454',
+        width:1,
+        height:Platform.OS == 'ios' ? 24 : 32
+    },
+
+    lineH:{
+        backgroundColor:'#e0e0e0',
+        height:1
+    },
+
+    btnBox:{
+        height:Platform.OS == 'ios' ? 24 : 32,
+        flex:1,
+        justifyContent:'center',
+        borderColor:'#545454',
+        borderLeftWidth:0,
+        borderWidth:1
     },
 
     contentHeaderBox:{
